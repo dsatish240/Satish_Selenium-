@@ -1,12 +1,16 @@
 package TestNG;
 
 import org.testng.annotations.Test;
+import utillities.CrossBrowser;
 import utillities.TestDataProvider;
 import org.testng.annotations.BeforeClass;
+
+import java.util.Scanner;
+
 import org.junit.AfterClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.edge.EdgeDriver;
+
 
 
 public class login {
@@ -17,19 +21,7 @@ public class login {
 	     
   	
     WebDriver driver;
-    @Test(priority = 1)
-    public void valid() {
-  	   	  
-  	     driver.findElement(By.className("register-btn")).click();
-  		 driver.findElement(By.id("email")).sendKeys("dsatish240@gmail.com");
-  		 driver.findElement(By.id("password")).sendKeys("9886529299");
-  		 driver.findElement(By.xpath("//input[@type = 'submit']")).click();
-  		 
-         driver.navigate().back();
-  		 
-  		 System.out.println("valid test data checked");
-    
-    }
+  
     
     @Test(priority = 1)
     public void validdata() {
@@ -80,12 +72,14 @@ public class login {
     }
 
     @BeforeClass
-    public void beforeMethod() {
-  	   
-  	    System.setProperty("webdriver.edge.driver","./msedgedriver.exe");
-  		driver=new EdgeDriver();
-  		driver.manage().window().maximize();
-  		driver.get("https://www.rahulshettyacademy.com/");
+    public void beforeClass() {
+    	
+    	CrossBrowser browser = new CrossBrowser();
+    
+    	Scanner sc=new Scanner(System.in);
+		System.out.println("Enter Browser Name");
+		String browsername=	sc.next();
+		driver=browser.browsersetup(browsername);
   	  
     }
 

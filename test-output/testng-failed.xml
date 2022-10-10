@@ -5,8 +5,8 @@
     <classes>
       <class name="TestNG.login">
         <methods>
-          <include name="VerifyHomePageTitle"/>
-          <include name="beforeMethod"/>
+          <include name="validdata"/>
+          <include name="beforeClass"/>
         </methods>
       </class> <!-- TestNG.login -->
     </classes>
